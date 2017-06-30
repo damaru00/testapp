@@ -1,0 +1,16 @@
+version: "3"
+# service configuration for our dockerized Rails app
+services:
+  app:
+  # use the Dockerfile next to this file
+    build: .
+  # sources environment variable configuration for our app
+  # env_file: .env
+  # rely on the RAILS_ENV value of the host machine
+    environment:
+      RAILS_ENV: development # $RAILS_ENV
+    ports:
+      # expose the port we configured nginx to bind to
+      - "80:80"
+
+
