@@ -49,6 +49,8 @@ RUN apt-get install -y libapache2-mod-passenger \
 # configure apache
 COPY config/containers/testapp.conf /etc/apache2/sites-available/testapp.conf
 
+RUN chown -R www-data:www-data $RAILS_ROOT && chmod -R 777 $RAILS_ROOT
+
 RUN a2dissite 000-default \
   && a2ensite testapp \
   && service apache2 restart
