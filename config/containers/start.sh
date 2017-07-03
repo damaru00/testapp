@@ -2,9 +2,9 @@
 
 bundle check || bundle install
 
-# Start apache
-#service apache2 start
-#source /etc/apache2/envvars
-#apache2 -D FOREGROUND
+pm2 start config/containers/test.json
 
-pm2-docker start config/containers/test.json
+# service apache2 start
+source /etc/apache2/envvars
+apache2 -D FOREGROUND
+
