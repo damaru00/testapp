@@ -51,6 +51,28 @@ COPY config/containers/testapp.conf /etc/apache2/sites-available/testapp.conf
 
 RUN chown -R www-data:www-data $RAILS_ROOT && chmod -R 777 $RAILS_ROOT
 
+# Define node version
+ENV NODE_VERSION=0.12.18
+# Define nvm base dir
+ENV NVM_DIR=/root/.nvm
+
+# Install nvm
+RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash \
+  && source $NVM_DIR/nvm.sh
+
+# Install nodejs, npm packages and pm2
+RUN source $NVM_DIR/nvm.sh \
+  && nvm install $NODE_VERSION \
+  && nvm alias default $NODE_VERSION \
+  && nvm use default
+  && npm install pm2 -g
+
+# Export NODE_PATH
+ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
+
+# Update PATH to make node/npm accessible
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
 RUN a2dissite 000-default \
   && a2ensite testapp \
   && service apache2 restart
