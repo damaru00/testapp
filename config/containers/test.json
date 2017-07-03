@@ -2,7 +2,7 @@
   "apps" : [
     {
       "name": "test",
-      "script": "test.rb",
+      "script": "config/containers/test.rb",
       "exec_interpreter": "ruby",
       "args": [],
       "log_date_format"  : "MM-DD HH:mm",
