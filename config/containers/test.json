@@ -1,0 +1,15 @@
+{
+  "apps" : [
+    {
+      "name": "test",
+      "script": "test.rb",
+      "exec_interpreter": "ruby",
+      "args": [],
+      "log_date_format"  : "MM-DD HH:mm",
+      "merge_logs": true,
+      "env": {
+        "RAILS_ENV": "testserver"
+      }
+    }
+  ]
+}

@@ -7,4 +7,4 @@ bundle check || bundle install
 #source /etc/apache2/envvars
 #apache2 -D FOREGROUND
 
-pm2-docker start all
+pm2-docker start config/containers/test.json
