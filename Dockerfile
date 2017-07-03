@@ -64,7 +64,7 @@ RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/i
 RUN source $NVM_DIR/nvm.sh \
   && nvm install $NODE_VERSION \
   && nvm alias default $NODE_VERSION \
-  && nvm use default
+  && nvm use default \
   && npm install pm2 -g
 
 # Export NODE_PATH
